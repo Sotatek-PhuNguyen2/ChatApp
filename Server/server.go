@@ -85,7 +85,7 @@ func (s *server) chat(c *client, args []string) {
 	msg := strings.Join(args[2:], " ")
 	for account := range s.account {
 		if account == username {
-			c.send(s.account[username], c.nick+": "+msg)
+			c.send(s.account[username], "Private <"+c.nick+">: "+msg)
 		}
 	}
 }

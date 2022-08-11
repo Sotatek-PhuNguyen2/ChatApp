@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -51,9 +52,12 @@ func main() {
 				continue
 			}
 			input = input[:len(input)-2]
+			ret := strings.Split(input, " ")
 			if input == "/quit" {
 				msg = "QUITROOM "
 				isRoom = 0
+			} else if ret[0] == "/private" {
+				msg = "CHAT " + strings.Join(ret[1:], " ")
 			} else {
 				msg = "MSG " + input
 			}
